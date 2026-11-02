@@ -1,922 +1,734 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Máquinas de Torniquetes en Perú</title>
+    <meta name="description" content="Venta de sistemas de torniquetes, molinetes de acceso para baños y servicios higiénicos en Perú. Amplia variedad de sistemas trípode y tornos, molinetes, sistemas para servicios higiénicos en mercados y centros comerciales.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="description" content="Fabricación y venta de torniquetes automatizados y dispensadores automáticos en Perú.">
-  <title>Peruvian Technology | Torniquetes y dispensadores automáticos</title>
+    <!-- Favicons (antes apuntaban a htmldemo.net, ahora usan tu logo local) -->
+    <link rel="shortcut icon" href="./index_files/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="./index_files/img/logo.png">
 
-  <!-- Se conservan las hojas de estilo que ya utiliza tu proyecto -->
-  <link rel="stylesheet" href="./index_files/css/bootstrap.css">
-  <link rel="stylesheet" href="./index_files/css/vendor.css">
-  <link rel="stylesheet" href="./index_files/css/main.css">
+    <!-- ************************* CSS Files ************************* -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./index_files/css/bootstrap.css">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="./index_files/css/vendor.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./index_files/css/main.css">
 
-  <style>
-    :root {
-      --pt-ink: #172033;
-      --pt-muted: #657086;
-      --pt-blue: #2457e6;
-      --pt-blue-dark: #173db0;
-      --pt-soft: #f4f7fc;
-      --pt-line: #e6eaf1;
-      --pt-white: #fff;
-      --pt-radius: 22px;
-      --pt-shadow: 0 18px 55px rgba(24, 42, 80, .09);
-    }
+    <!-- =====================================================================
+         CORRECCIONES TÉCNICAS (responsive / desbordamiento horizontal)
+         Va DESPUÉS de main.css para poder sobrescribirlo.
+         Si prefieres, mueve este bloque a un archivo: index_files/css/fixes.css
+         ===================================================================== -->
+    <style>
+        /* 1) Evita la franja/scroll lateral a la derecha */
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
+        body { overflow-x: hidden; }
+        .wrapper { overflow-x: clip; }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-    body {
-      margin: 0;
-      color: var(--pt-ink);
-      background: var(--pt-white);
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; height: auto; }
-    a { text-decoration: none; }
-    .pt-container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+        /* 2) Imágenes siempre dentro de su contenedor */
+        img { max-width: 100%; height: auto; }
 
-    /* Header */
-    .pt-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      width: 100%;
-      background: rgba(255,255,255,.94);
-      border-bottom: 1px solid rgba(230,234,241,.85);
-      backdrop-filter: blur(14px);
-    }
-    .pt-nav {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-    .pt-logo img { width: 190px; max-height: 58px; object-fit: contain; object-position: left center; }
-    .pt-menu { display: flex; align-items: center; gap: 34px; margin: 0; padding: 0; list-style: none; }
-    .pt-menu a { color: #354057; font-size: 14px; font-weight: 650; transition: color .2s ease; }
-    .pt-menu a:hover { color: var(--pt-blue); }
-    .pt-nav-cta, .pt-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 0;
-      border-radius: 999px;
-      color: #fff !important;
-      background: var(--pt-blue);
-      font-weight: 700;
-      font-size: 14px;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-    .pt-nav-cta:hover, .pt-button:hover { color: #fff; background: var(--pt-blue-dark); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(36,87,230,.2); }
-    .pt-menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--pt-line);
-      border-radius: 12px;
-      background: #fff;
-      color: var(--pt-ink);
-      font-size: 23px;
-      cursor: pointer;
-    }
+        /* 3) Hero: el h1 de 6rem fijo y la imagen al 130% desbordaban la pantalla */
+        .homepage-slider { overflow: hidden; }
+        .homepage-slider .single-slide {
+            background-size: cover;
+            background-position: center;
+            padding-block: 2rem;
+        }
+        .homepage-slider .heading__primary {
+            font-size: clamp(2rem, 4.2vw, 4.5rem) !important;
+            line-height: 1.1;
+            overflow-wrap: break-word;
+        }
+        .homepage-slider .slider-image img { max-width: 100%; }
+        @media (min-width: 992px) {
+            .homepage-slider .slider-image img { max-width: 130%; } /* mismo efecto original, sin desbordar */
+        }
 
-    /* Hero: dos columnas reales, sin columna vacía */
-    .pt-hero {
-      position: relative;
-      overflow: hidden;
-      padding: 76px 0 82px;
-      background:
-        radial-gradient(circle at 78% 42%, rgba(72,126,255,.13), transparent 32%),
-        linear-gradient(180deg, #fbfcff 0%, #f3f6fc 100%);
-    }
-    .pt-hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
-      align-items: center;
-      gap: clamp(28px, 5vw, 76px);
-    }
-    .pt-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      color: var(--pt-blue);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-    .pt-eyebrow:before { content: ""; width: 25px; height: 2px; background: currentColor; }
-    .pt-hero h1 {
-      max-width: 620px;
-      margin: 0 0 22px;
-      font-size: clamp(38px, 5.2vw, 66px);
-      line-height: 1.06;
-      letter-spacing: -.045em;
-      font-weight: 800;
-    }
-    .pt-hero h1 span { color: var(--pt-blue); }
-    .pt-hero-copy { max-width: 540px; margin: 0 0 30px; color: var(--pt-muted); font-size: 17px; }
-    .pt-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-    .pt-button-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 1px solid #d6deed;
-      border-radius: 999px;
-      color: var(--pt-ink);
-      font-weight: 700;
-      font-size: 14px;
-      background: rgba(255,255,255,.7);
-    }
-    .pt-hero-visual {
-      min-width: 0;
-      min-height: 430px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,.85);
-      border-radius: 32px;
-      background: linear-gradient(145deg, rgba(255,255,255,.95), rgba(236,242,252,.8));
-      box-shadow: var(--pt-shadow);
-    }
-    .pt-hero-visual img {
-      width: 100%;
-      max-width: 610px;
-      max-height: 480px;
-      object-fit: contain;
-      object-position: center;
-    }
-    .pt-hero-note { margin-top: 22px; color: #7b8598; font-size: 12px; }
+        /* 4) Altura del espaciador del header en móvil */
+        @media (max-width: 991.98px) {
+            .header-sticky-height { height: 80px !important; }
+        }
 
-    /* Trust strip */
-    .pt-trust { border-bottom: 1px solid var(--pt-line); background: #fff; }
-    .pt-trust-inner { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; padding: 23px 0; }
-    .pt-trust-item { display: flex; align-items: center; justify-content: center; gap: 12px; color: #45516a; font-size: 13px; font-weight: 700; text-align: center; }
-    .pt-trust-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 12px; color: var(--pt-blue); background: #edf2ff; font-size: 17px; }
+        /* 5) Parallax: todas las capas se apilan exactamente sobre la primera */
+        .parallax { position: relative; width: 100%; max-width: 746px; margin-inline: auto; pointer-events: none; }
+        .parallax-layer { transition: transform .15s ease-out; will-change: transform; }
+        .parallax-layer:first-child { position: relative; display: block; }
+        .parallax-layer:not(:first-child) { position: absolute; top: 0; left: 0; width: 100%; }
+        .parallax-layer img { display: block; width: 100%; height: auto; }
 
-    /* General sections */
-    .pt-section { padding: 94px 0; }
-    .pt-section-soft { background: var(--pt-soft); }
-    .pt-section-heading { max-width: 720px; margin: 0 auto 48px; text-align: center; }
-    .pt-section-heading .pt-eyebrow { justify-content: center; }
-    .pt-section-heading h2 { margin: 0 0 14px; font-size: clamp(30px, 4vw, 45px); line-height: 1.13; letter-spacing: -.035em; font-weight: 800; }
-    .pt-section-heading p { margin: 0; color: var(--pt-muted); font-size: 16px; }
+        /* 6) Insignias de calidad/garantía */
+        .badges { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+        @media (min-width: 768px) { .badges { justify-content: flex-start; } }
+        .badges img { height: 100px; width: auto; }
 
-    /* Product feature sections */
-    .pt-product-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(32px, 6vw, 82px); }
-    .pt-product-grid.pt-reverse .pt-product-visual { order: 2; }
-    .pt-product-grid.pt-reverse .pt-product-copy { order: 1; }
-    .pt-product-visual {
-      min-width: 0;
-      min-height: 420px;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      border: 1px solid var(--pt-line);
-      border-radius: 28px;
-      background: #fff;
-      box-shadow: var(--pt-shadow);
-    }
-    .pt-product-visual img { width: 100%; max-width: 570px; max-height: 470px; object-fit: contain; }
-    .pt-product-copy h2 { margin: 0 0 20px; font-size: clamp(32px, 4vw, 46px); line-height: 1.12; letter-spacing: -.035em; font-weight: 800; }
-    .pt-product-copy p { margin: 0 0 24px; color: var(--pt-muted); font-size: 16px; }
-    .pt-check-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px 18px; margin: 0 0 30px; padding: 0; list-style: none; }
-    .pt-check-list li { display: flex; gap: 10px; align-items: flex-start; color: #39455c; font-size: 14px; font-weight: 650; }
-    .pt-check-list li:before { content: "✓"; flex: 0 0 21px; width: 21px; height: 21px; display: grid; place-items: center; border-radius: 50%; color: var(--pt-blue); background: #eaf0ff; font-size: 12px; font-weight: 900; }
+        /* 7) Textos largos en columnas angostas (móvil) */
+        .benefit-item h3 { overflow-wrap: anywhere; }
+        .benefit-item img { max-width: 100%; }
 
-    /* Feature cards */
-    .pt-feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-    .pt-feature-card {
-      min-width: 0;
-      padding: 26px 23px;
-      border: 1px solid var(--pt-line);
-      border-radius: 18px;
-      background: #fff;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-    .pt-feature-card:hover { transform: translateY(-4px); box-shadow: var(--pt-shadow); }
-    .pt-feature-card img { width: 54px; height: 54px; margin-bottom: 18px; object-fit: contain; }
-    .pt-feature-card h3 { margin: 0 0 7px; font-size: 17px; font-weight: 800; }
-    .pt-feature-card p { margin: 0; color: var(--pt-muted); font-size: 14px; line-height: 1.55; }
+        /* 8) Mapa con bordes redondeados reales */
+        .gallery { overflow: hidden; }
+        .gallery a, .gallery img { display: block; width: 100%; }
 
-    /* Product detail renders */
-    .pt-detail-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
-    .pt-detail-card { min-width: 0; overflow: hidden; border: 1px solid var(--pt-line); border-radius: 18px; background: #fff; }
-    .pt-detail-image { height: 220px; display: grid; place-items: center; padding: 16px; background: #f8faff; }
-    .pt-detail-image img { width: 100%; height: 100%; object-fit: contain; }
-    .pt-detail-card h3 { margin: 0; padding: 15px 17px 17px; font-size: 14px; font-weight: 750; }
+        /* 9) Footer: apilado en móvil y sin textos que se salgan */
+        .address-widget a, .address-widget address { overflow-wrap: anywhere; }
+        .address-widget .addr-label { display: block; font-weight: 700; }
 
-    /* Product selector */
-    .pt-products { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
-    .pt-product-card { overflow: hidden; border: 1px solid var(--pt-line); border-radius: 22px; background: #fff; box-shadow: 0 10px 35px rgba(24,42,80,.05); }
-    .pt-product-card-image { height: 300px; display: grid; place-items: center; padding: 24px; background: #f7f9fd; }
-    .pt-product-card-image img { width: 100%; height: 100%; object-fit: contain; }
-    .pt-product-card-body { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 24px; }
-    .pt-product-card-body h3 { margin: 0; font-size: 19px; font-weight: 800; }
+        /* 10) Menú móvil (el hamburguesa antes no abría nada) */
+        .header__inner { position: relative; }
+        .mobile-nav {
+            display: none;
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+            padding: .5rem 1.5rem 1rem;
+            z-index: 999;
+        }
+        .mobile-nav.is-open { display: block; }
+        .mobile-nav a { display: block; padding: .75rem 0; border-bottom: 1px solid #eee; color: inherit; text-decoration: none; }
+        .mobile-nav a:last-child { border-bottom: 0; }
+        @media (min-width: 992px) { .mobile-nav { display: none !important; } }
 
-    /* Clients and contact */
-    .pt-clients { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; align-items: center; }
-    .pt-client { min-height: 110px; display: grid; place-items: center; padding: 18px; border: 1px solid var(--pt-line); border-radius: 16px; background: #fff; }
-    .pt-client img { max-width: 120px; max-height: 70px; object-fit: contain; }
-    .pt-contact-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; padding: clamp(28px,5vw,58px); border-radius: 28px; color: #fff; background: linear-gradient(120deg,#173db0,#2867ef); }
-    .pt-contact-box h2 { margin: 0 0 10px; color: #fff; font-size: clamp(28px,4vw,42px); line-height: 1.12; font-weight: 800; }
-    .pt-contact-box p { margin: 0; color: rgba(255,255,255,.8); }
-    .pt-contact-box .pt-button { color: var(--pt-blue) !important; background: #fff; white-space: nowrap; }
-    .pt-contact-box .pt-button:hover { background: #edf2ff; }
-    .pt-contact-info { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 28px; }
-    .pt-info-card { padding: 22px; border: 1px solid var(--pt-line); border-radius: 16px; }
-    .pt-info-card strong { display: block; margin-bottom: 5px; }
-    .pt-info-card span, .pt-info-card a { color: var(--pt-muted); font-size: 14px; }
+        /* 11) Preloader nunca se queda pegado (por si falla el JS) */
+        .ft-preloader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s, visibility .3s; }
+        .ft-preloader { animation: ft-auto-hide .3s ease 5s forwards; }
+        @keyframes ft-auto-hide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 
-    /* Footer */
-    .pt-footer { margin-top: 90px; padding: 55px 0 22px; border-top: 1px solid var(--pt-line); background: #f8faff; }
-    .pt-footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
-    .pt-footer-logo img { width: 190px; max-height: 58px; object-fit: contain; object-position: left; margin-bottom: 15px; }
-    .pt-footer p, .pt-footer a, .pt-footer address { color: var(--pt-muted); font-size: 14px; font-style: normal; }
-    .pt-footer h3 { margin: 0 0 14px; font-size: 15px; font-weight: 800; }
-    .pt-footer-links { display: grid; gap: 8px; }
-    .pt-copyright { margin-top: 35px; padding-top: 20px; border-top: 1px solid var(--pt-line); color: #8791a3; font-size: 12px; text-align: center; }
-
-    /* Floating WhatsApp */
-    .pt-whatsapp {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 900;
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      color: #fff;
-      background: #20b968;
-      box-shadow: 0 8px 25px rgba(20,140,80,.28);
-      font-size: 25px;
-      font-weight: 800;
-    }
-
-    @media (max-width: 900px) {
-      .pt-menu { gap: 18px; }
-      .pt-nav-cta { display: none; }
-      .pt-hero { padding: 58px 0; }
-      .pt-hero-grid, .pt-product-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .pt-hero-visual { min-height: 350px; }
-      .pt-product-visual { min-height: 340px; }
-      .pt-feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .pt-detail-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-      .pt-detail-image { height: 200px; }
-    }
-
-    @media (max-width: 680px) {
-      .pt-container { width: min(100% - 34px, 540px); }
-      .pt-nav { min-height: 68px; }
-      .pt-logo img { width: 155px; }
-      .pt-menu-toggle { display: block; }
-      .pt-menu {
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        display: none;
-        align-items: stretch;
-        gap: 0;
-        padding: 10px 17px 17px;
-        border-bottom: 1px solid var(--pt-line);
-        background: #fff;
-      }
-      .pt-menu.is-open { display: flex; flex-direction: column; }
-      .pt-menu li a { display: block; padding: 13px 8px; }
-      .pt-hero { padding: 44px 0 50px; }
-      .pt-hero-grid, .pt-product-grid { grid-template-columns: 1fr; gap: 28px; }
-      .pt-hero h1 { font-size: clamp(36px, 10vw, 49px); }
-      .pt-hero-copy { font-size: 15px; }
-      .pt-hero-visual { min-height: 280px; padding: 12px; border-radius: 22px; }
-      .pt-hero-visual img { max-height: 310px; }
-      .pt-trust-inner { grid-template-columns: 1fr; gap: 13px; padding: 18px 0; }
-      .pt-trust-item { justify-content: flex-start; text-align: left; }
-      .pt-section { padding: 65px 0; }
-      .pt-section-heading { margin-bottom: 30px; }
-      .pt-product-grid.pt-reverse .pt-product-visual,
-      .pt-product-grid.pt-reverse .pt-product-copy { order: initial; }
-      .pt-product-visual { min-height: 280px; padding: 12px; }
-      .pt-product-visual img { max-height: 310px; }
-      .pt-check-list { grid-template-columns: 1fr; }
-      .pt-feature-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .pt-feature-card { padding: 19px 15px; }
-      .pt-feature-card img { width: 44px; height: 44px; }
-      .pt-feature-card h3 { font-size: 15px; }
-      .pt-feature-card p { font-size: 13px; }
-      .pt-detail-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .pt-detail-image { height: 155px; padding: 10px; }
-      .pt-detail-card h3 { padding: 12px; font-size: 12px; }
-      .pt-products { grid-template-columns: 1fr; }
-      .pt-product-card-image { height: 240px; }
-      .pt-product-card-body { align-items: flex-start; flex-direction: column; padding: 19px; }
-      .pt-clients { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-      .pt-contact-box { grid-template-columns: 1fr; gap: 22px; text-align: center; }
-      .pt-contact-box .pt-button { justify-self: center; }
-      .pt-contact-info { grid-template-columns: 1fr; }
-      .pt-footer { margin-top: 60px; }
-      .pt-footer-grid { grid-template-columns: 1fr; gap: 25px; }
-      .pt-whatsapp { right: 15px; bottom: 15px; width: 52px; height: 52px; }
-    }
-
-    @media (max-width: 380px) {
-      .pt-feature-grid { grid-template-columns: 1fr; }
-      .pt-detail-grid { grid-template-columns: 1fr; }
-      .pt-hero-actions { align-items: stretch; flex-direction: column; }
-      .pt-hero-actions a { width: 100%; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-  
-    /* Identidad visual tecnológica: tipografía ligera, precisión y jerarquía */
-    body {
-      font-family: "Manrope", "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      letter-spacing: .012em;
-      line-height: 1.72;
-      color: #172235;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    .pt-menu a {
-      font-family: "Manrope", sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .105em;
-      text-transform: uppercase;
-    }
-
-    .pt-nav-cta, .pt-button, .pt-button-outline {
-      min-height: 48px;
-      padding: 0 24px;
-      border-radius: 7px;
-      font-family: "Manrope", sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .105em;
-      text-transform: uppercase;
-      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
-
-    .pt-nav-cta, .pt-button {
-      background: #1748c8;
-      box-shadow: 0 7px 20px rgba(23,72,200,.13);
-    }
-
-    .pt-nav-cta:hover, .pt-button:hover {
-      background: #103aa9;
-      box-shadow: 0 12px 28px rgba(23,72,200,.22);
-      transform: translateY(-2px);
-    }
-
-    .pt-button-outline {
-      border: 1px solid #cbd5e5;
-      color: #172235;
-      background: rgba(255,255,255,.82);
-    }
-
-    .pt-button-outline:hover {
-      border-color: #1748c8;
-      color: #1748c8;
-      background: #fff;
-      transform: translateY(-2px);
-    }
-
-    .pt-eyebrow {
-      font-family: "Manrope", sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .22em;
-    }
-
-    .pt-hero h1,
-    .pt-section-heading h2,
-    .pt-product-copy h2,
-    .pt-contact-box h2 {
-      font-family: "Space Grotesk", "Manrope", sans-serif;
-      font-weight: 400;
-      letter-spacing: -.025em;
-      line-height: 1.13;
-    }
-
-    .pt-hero h1 {
-      font-size: clamp(39px, 5.1vw, 68px);
-      letter-spacing: -.035em;
-      line-height: 1.08;
-    }
-
-    .pt-hero h1 span {
-      font-weight: 300;
-      letter-spacing: -.045em;
-    }
-
-    .pt-section-heading h2,
-    .pt-product-copy h2 {
-      font-size: clamp(31px, 3.7vw, 46px);
-    }
-
-    .pt-hero-copy, .pt-section-heading p, .pt-product-copy p {
-      font-weight: 400;
-      letter-spacing: .005em;
-      line-height: 1.8;
-      color: #657187;
-    }
-
-    .pt-trust-item {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .075em;
-      text-transform: uppercase;
-    }
-
-    .pt-feature-card,
-    .pt-detail-card,
-    .pt-product-card,
-    .pt-info-card {
-      border-radius: 10px;
-      border-color: #e3e9f2;
-      box-shadow: 0 8px 28px rgba(20,39,75,.035);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-
-    .pt-feature-card:hover,
-    .pt-detail-card:hover,
-    .pt-product-card:hover {
-      border-color: #cbd8f4;
-      box-shadow: 0 18px 42px rgba(20,39,75,.09);
-      transform: translateY(-4px);
-    }
-
-    .pt-feature-card h3,
-    .pt-detail-card h3,
-    .pt-product-card h3 {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 500;
-      letter-spacing: -.01em;
-    }
-
-    .pt-feature-card p,
-    .pt-detail-card p {
-      font-weight: 400;
-      line-height: 1.75;
-    }
-
-    .pt-hero-visual,
-    .pt-product-visual {
-      border-radius: 12px;
-      border-color: #e5ebf4;
-      box-shadow: 0 22px 60px rgba(22,43,82,.075);
-    }
-
-    .pt-hero {
-      background:
-        radial-gradient(circle at 80% 40%, rgba(48,104,230,.10), transparent 31%),
-        linear-gradient(135deg, #fbfcff 0%, #f3f6fb 100%);
-    }
-
-    .pt-section {
-      padding-top: clamp(70px, 8vw, 104px);
-      padding-bottom: clamp(70px, 8vw, 104px);
-    }
-
-    .pt-section-heading {
-      margin-bottom: 54px;
-    }
-
-    .pt-section-heading .pt-eyebrow {
-      margin-bottom: 17px;
-    }
-
-    .pt-contact-box {
-      border-radius: 12px;
-      background: linear-gradient(120deg, #101d35, #173c82);
-      box-shadow: 0 22px 55px rgba(16,35,73,.16);
-    }
-
-    .pt-contact-box h2 {
-      font-weight: 400;
-      letter-spacing: -.025em;
-    }
-
-    .pt-footer h3 {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 500;
-      letter-spacing: .04em;
-    }
-
-    .pt-footer-links a,
-    .pt-footer-links span,
-    .pt-copyright {
-      letter-spacing: .025em;
-    }
-
-    .pt-whatsapp {
-      width: 54px;
-      height: 54px;
-      border-radius: 10px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.18);
-    }
-
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid rgba(36,87,230,.35);
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 767px) {
-      .pt-menu a {
-        font-size: 12px;
-        letter-spacing: .07em;
-      }
-      .pt-hero h1 {
-        font-size: clamp(36px, 10vw, 49px);
-        letter-spacing: -.035em;
-      }
-      .pt-section-heading h2,
-      .pt-product-copy h2 {
-        font-size: clamp(29px, 8vw, 37px);
-      }
-      .pt-nav-cta, .pt-button, .pt-button-outline {
-        min-height: 46px;
-        padding: 0 18px;
-        font-size: 10px;
-        letter-spacing: .08em;
-      }
-      .pt-trust-item {
-        font-size: 9px;
-        letter-spacing: .04em;
-      }
-    }
-
-  </style>
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .parallax-layer { transition: none; }
+        }
+    </style>
 </head>
 
 <body>
-  <header class="pt-header">
-    <div class="pt-container pt-nav">
-      <a class="pt-logo" href="#inicio" aria-label="Peruvian Technology, inicio">
-        <img src="./index_files/img/logo.png" alt="Peruvian Technology">
-      </a>
 
-      <button class="pt-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="pt-menu">☰</button>
-
-      <nav aria-label="Navegación principal">
-        <ul class="pt-menu" id="pt-menu">
-          <li><a href="#torniquete">Torniquetes</a></li>
-          <li><a href="#dispensador">Dispensadores</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#contactenos">Contacto</a></li>
-        </ul>
-      </nav>
-
-      <a class="pt-nav-cta" href="https://wa.me/904814963" target="_blank" rel="noopener">Solicitar cotización ↗</a>
+    <!-- Preloader Start -->
+    <div class="ft-preloader">
+        <div class="ft-preloader-inner h-100 d-flex align-items-center justify-content-center">
+            <div class="ft-child ft-bounce1"></div>
+            <div class="ft-child ft-bounce2"></div>
+            <div class="ft-child ft-bounce3"></div>
+        </div>
     </div>
-  </header>
+    <!-- Preloader End -->
 
-  <main>
-    <section class="pt-hero" id="inicio">
-      <div class="pt-container pt-hero-grid">
-        <div>
-          <div class="pt-eyebrow">Tecnología fabricada para tu negocio</div>
-          <h1>Control de acceso y <span>dispensación</span> inteligente</h1>
-          <p class="pt-hero-copy">Diseñamos y fabricamos soluciones automatizadas para administrar accesos, optimizar procesos y ofrecer una experiencia eficiente a tus usuarios.</p>
-          <div class="pt-hero-actions">
-            <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Solicitar visita técnica ↗</a>
-            <a class="pt-button-outline" href="#torniquete">Conocer productos</a>
-          </div>
-          <div class="pt-hero-note">Soluciones para empresas, centros comerciales y espacios de uso público.</div>
-        </div>
-        <div class="pt-hero-visual">
-          <img src="./index_files/img/fondopng.png" alt="Render del sistema de torniquete automatizado">
-        </div>
-      </div>
-    </section>
+    <!-- Main Wrapper Start -->
+    <div class="wrapper">
 
-    <section class="pt-trust" aria-label="Ventajas de nuestros productos">
-      <div class="pt-container pt-trust-inner">
-        <div class="pt-trust-item"><span class="pt-trust-icon">◇</span> Diseño funcional y resistente</div>
-        <div class="pt-trust-item"><span class="pt-trust-icon">⚙</span> Tecnología automatizada</div>
-        <div class="pt-trust-item"><span class="pt-trust-icon">✓</span> Soporte y atención técnica</div>
-      </div>
-    </section>
+        <!-- Header Start -->
+        <header class="header header-default site-header header-transparent">
+            <div class="header__outer">
+                <div class="header__inner header--fixed">
+                    <div class="container">
+                        <div class="header__main">
+                            <div class="header__col header__left">
+                                <a href="#" class="logo">
+                                    <figure class="logo--normal">
+                                        <img src="./index_files/img/logo.png" alt="Peruvian Technology Manufacturing Company">
+                                    </figure>
+                                    <figure class="logo--transparency">
+                                        <img src="./index_files/img/logo.png" alt="Peruvian Technology Manufacturing Company">
+                                    </figure>
+                                </a>
+                            </div>
 
-    <section class="pt-section" id="torniquete">
-      <div class="pt-container pt-product-grid">
-        <div class="pt-product-copy">
-          <div class="pt-eyebrow">Control de acceso</div>
-          <h2>Torniquetes automatizados</h2>
-          <p>Olvídate de las largas esperas y administra el ingreso a tus instalaciones de forma ordenada. Nuestros torniquetes automatizados permiten controlar el acceso de los usuarios y llevar un registro preciso de los ingresos.</p>
-          <ul class="pt-check-list">
-            <li>Control de ingreso de usuarios</li>
-            <li>Estructura de uso intensivo</li>
-            <li>Indicadores LED</li>
-            <li>Integración con dispositivos compatibles</li>
-          </ul>
-          <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Cotizar torniquete ↗</a>
-        </div>
-        <div class="pt-product-visual">
-          <img src="./index_files/img/torniquete.png" alt="Torniquete automatizado, vista de producto">
-        </div>
-      </div>
-    </section>
+                            <div class="header__col header__center">
+                                <nav class="main-navigation d-none d-lg-block">
+                                    <ul class="mainmenu">
+                                        <li class="mainmenu__item menu-item-has-children position-relative">
+                                            <a href="#torniquete" class="mainmenu__link">Torniquete</a>
+                                            <div class="inner-menu">
+                                                <ul class="sub-menu">
+                                                    <li><a href="#torniqueteCaracteristicas">Características</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children position-relative">
+                                            <a href="#dispensador" class="mainmenu__link">Dispensador automático</a>
+                                            <div class="inner-menu">
+                                                <ul class="sub-menu">
+                                                    <li><a href="#dispensadorCaracteristicas">Características</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="mainmenu__item">
+                                            <a href="#contactenos" class="mainmenu__link">Contáctenos</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
 
-    <section class="pt-section pt-section-soft" id="torniqueteCaracteristicas">
-      <div class="pt-container">
-        <div class="pt-section-heading">
-          <div class="pt-eyebrow">Características</div>
-          <h2>Diseñado para un control de acceso eficiente</h2>
-          <p>Conoce los elementos que hacen práctico y funcional nuestro torniquete.</p>
-        </div>
-        <div class="pt-feature-grid">
-          <article class="pt-feature-card">
-            <img src="./index_files/img/capacidad.png" alt="">
-            <h3>Capacidad</h3>
-            <p>Hasta 8.640 personas por día, según las condiciones de operación.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/Mantenimiento.png" alt="">
-            <h3>Mantenimiento</h3>
-            <p>Sistema de mantenimiento computarizado.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/monedero.png" alt="">
-            <h3>Ingreso de monedas</h3>
-            <p>Monedero electrónico.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/brazo.png" alt="">
-            <h3>Resistencia</h3>
-            <p>Brazo de acero.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/indicador.png" alt="">
-            <h3>Indicador LED</h3>
-            <p>Señalización visual del estado del equipo.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/comunicacion.png" alt="">
-            <h3>Conectividad</h3>
-            <p>Comunicación con múltiples dispositivos compatibles.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/caja.png" alt="">
-            <h3>Almacén de monedas</h3>
-            <p>Compartimento reforzado.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/seguro.png" alt="">
-            <h3>Seguridad</h3>
-            <p>Estructura reforzada y acceso mediante llave.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+                            <div class="header__col header__right">
+                                <div class="toolbar-item d-block d-lg-none">
+                                    <a href="#mobileNav" class="hamburger-icon js-toolbar menu-btn" role="button"
+                                       aria-label="Abrir menú" aria-controls="mobileNav" aria-expanded="false">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <section class="pt-section">
-      <div class="pt-container">
-        <div class="pt-section-heading">
-          <div class="pt-eyebrow">Detalles del equipo</div>
-          <h2>Una mirada más cercana al producto</h2>
-          <p>Utiliza estas imágenes para mostrar diferentes ángulos, componentes y detalles del torniquete.</p>
-        </div>
-        <div class="pt-detail-grid">
-          <article class="pt-detail-card">
-            <div class="pt-detail-image"><img src="./index_files/img/img1.png" alt="Detalle del torniquete, vista uno"></div>
-            <h3>Vista y componentes</h3>
-          </article>
-          <article class="pt-detail-card">
-            <div class="pt-detail-image"><img src="./index_files/img/img2.png" alt="Detalle del torniquete, vista dos"></div>
-            <h3>Diseño del equipo</h3>
-          </article>
-          <article class="pt-detail-card">
-            <div class="pt-detail-image"><img src="./index_files/img/img3.png" alt="Detalle del torniquete, vista tres"></div>
-            <h3>Elementos de control</h3>
-          </article>
-          <article class="pt-detail-card">
-            <div class="pt-detail-image"><img src="./index_files/img/img4.png" alt="Detalle del torniquete, vista cuatro"></div>
-            <h3>Acabados y estructura</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="pt-section pt-section-soft" id="dispensador">
-      <div class="pt-container pt-product-grid pt-reverse">
-        <div class="pt-product-visual">
-          <img src="./index_files/img/dispensador.png" alt="Dispensador automático, vista de producto">
-        </div>
-        <div class="pt-product-copy">
-          <div class="pt-eyebrow">Automatización</div>
-          <h2>Dispensadores automáticos</h2>
-          <p>Una solución automatizada que facilita la entrega de suministros y ayuda a controlar el consumo. Su interfaz permite una operación sencilla y el seguimiento de información del equipo.</p>
-          <ul class="pt-check-list">
-            <li>Despacho automático de papel</li>
-            <li>Control del suministro</li>
-            <li>Notificaciones en pantalla</li>
-            <li>Alertas de recarga y apertura</li>
-          </ul>
-          <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Cotizar dispensador ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="pt-section" id="dispensadorCaracteristicas">
-      <div class="pt-container">
-        <div class="pt-section-heading">
-          <div class="pt-eyebrow">Características</div>
-          <h2>Control y comodidad en cada despacho</h2>
-          <p>Funciones del dispensador automático.</p>
-        </div>
-        <div class="pt-feature-grid">
-          <article class="pt-feature-card">
-            <img src="./index_files/img/papel.png" alt="">
-            <h3>Suministro de papel</h3>
-            <p>Hasta 1.000 metros diarios, según las condiciones de uso.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/Mantenimiento.png" alt="">
-            <h3>Mantenimiento</h3>
-            <p>Sistema de mantenimiento computarizado.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/notipantalla.png" alt="">
-            <h3>Notificación por pantalla</h3>
-            <p>Información del papel restante en tiempo real.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/alarmapapel.png" alt="">
-            <h3>Sistema de alarma</h3>
-            <p>Alerta para recarga de papel y tapa abierta.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/silencioso.png" alt="">
-            <h3>Funcionamiento silencioso</h3>
-            <p>Diseñado para operar con bajo nivel de ruido.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/contador.png" alt="">
-            <h3>Contador</h3>
-            <p>Visualización de la cantidad de papel despachado.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/seguro.png" alt="">
-            <h3>Seguridad</h3>
-            <p>Estructura reforzada y sistema de cierre con llave.</p>
-          </article>
-          <article class="pt-feature-card">
-            <img src="./index_files/img/comunicacion.png" alt="">
-            <h3>Conectividad</h3>
-            <p>Comunicación con múltiples dispositivos compatibles.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="pt-section pt-section-soft">
-      <div class="pt-container">
-        <div class="pt-section-heading">
-          <div class="pt-eyebrow">Soluciones</div>
-          <h2>Encuentra el equipo que necesitas</h2>
-          <p>Conoce nuestras soluciones de automatización y solicita información técnica.</p>
-        </div>
-        <div class="pt-products" id="productos">
-          <article class="pt-product-card">
-            <div class="pt-product-card-image"><img src="./index_files/img/dispensadorImg.png" alt="Dispensador automático"></div>
-            <div class="pt-product-card-body">
-              <h3>Dispensador automático</h3>
-              <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Cotizar ↗</a>
+                    <!-- Menú móvil -->
+                    <nav class="mobile-nav d-lg-none" id="mobileNav" aria-label="Menú principal">
+                        <a href="#torniquete">Torniquete</a>
+                        <a href="#dispensador">Dispensador automático</a>
+                        <a href="#contactenos">Contáctenos</a>
+                    </nav>
+                </div>
+                <div class="header-sticky-height" style="height: 128px;"></div>
             </div>
-          </article>
-          <article class="pt-product-card">
-            <div class="pt-product-card-image"><img src="./index_files/img/torniqueteImg.png" alt="Torniquete automatizado"></div>
-            <div class="pt-product-card-body">
-              <h3>Torniquete automatizado</h3>
-              <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Cotizar ↗</a>
+        </header>
+        <!-- Header End -->
+
+        <!-- Main Content Wrapper Start -->
+        <main class="main-content-wrapper">
+
+            <!-- Slider area Start -->
+            <section class="homepage-slider mb--11pt5">
+                <div class="element-carousel">
+                    <div class="item">
+                        <div class="single-slide d-flex align-items-center bg-image"
+                             data-bg-image="./index_files/img/slider-bg-01.jpg"
+                             style="background-image: url('./index_files/img/slider-bg-01.jpg');">
+                            <div class="container">
+                                <div class="row align-items-center g-0 w-100">
+                                    <div class="col-lg-4 col-md-8">
+                                        <div class="slider-content">
+                                            <div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
+                                                <h3 class="text-uppercase font-weight-light">Productos Increíbles!</h3>
+                                                <h1 class="heading__primary mb--40 mb-md--20">Fabricamos sistemas de Control y Dispensación</h1>
+                                                <p class="font-weight-light">Sé parte de este emocionante viaje hacia el futuro tecnológico. Navega por nuestra página para descubrir cómo nuestras soluciones están redefiniendo la industria y cómo podemos ayudarte a llevar tu negocio al siguiente nivel.</p>
+                                            </div>
+                                            <div class="slider-content__btn">
+                                                <a href="https://wa.me/51904814963" class="btn-link" target="_blank" rel="noopener">¡Solicite una visita técnica gratuita!</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 offset-lg-1 col-md-4">
+                                        <figure class="slider-image d-none d-md-block">
+                                            <img src="./index_files/img/fondopng.png" alt="Torniquete y dispensador automático">
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Slider area End -->
+
+
+            <!-- ===================== TORNIQUETE ===================== -->
+            <section class="bg-secondary overflow-hidden py-2 py-sm-3 py-md-4 py-lg-5" id="torniquete">
+                <div class="container py-5 pb-lg-4">
+                    <div class="row">
+
+                        <!-- Cursor parallax -->
+                        <div class="col-md-7 offset-xl-1 order-md-2">
+                            <div class="parallax">
+                                <div class="parallax-layer" data-depth="0.1">
+                                    <img src="./index_files/img/img2.png" alt="Torniquete automatizado" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="0.3">
+                                    <img src="./index_files/img/img1.png" alt="" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="-0.1">
+                                    <img src="./index_files/img/img3.png" alt="" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="0.2">
+                                    <img src="./index_files/img/img4.png" alt="" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Texto + insignias -->
+                        <div class="col-md-5 col-xl-4 order-md-1 text-center text-md-start pt-lg-3">
+                            <h2 class="display-5 mb-4">Torniquetes Automatizados</h2>
+                            <p class="fs-xl pb-2 mb-4 mb-xl-5">Olvídate de las largas esperas y vive una experiencia sin complicaciones con nuestros torniquetes automatizados. Su diseño innovador y tecnología de vanguardia te ofrecen control y seguridad en cada paso. Con una interfaz intuitiva y amigable, permitirán que su centro comercial controle el acceso de sus servicios. Además de su comodidad, nuestros torniquetes también te permiten tener un control preciso en tiempo real de sus ingresos. Descubre hoy mismo el futuro de la accesibilidad con nuestros torniquetes automáticos de última generación.</p>
+                            <h3 class="pb-3 mb-lg-4">Coming soon on</h3>
+                            <div class="badges">
+                                <img src="./index_files/img/calidad.png" alt="Sello de calidad" loading="lazy">
+                                <img src="./index_files/img/garantia.png" alt="Sello de garantía" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beneficios torniquete -->
+            <section class="container mb-5 pt-md-2 pt-lg-4 pt-xl-5" id="torniqueteCaracteristicas">
+                <h2 class="h1 my-4 pt-2 text-center">Beneficios del torniquete inteligente que está transformando el mercado</h2>
+                <div class="row pb-4">
+
+                    <!-- Columna izquierda -->
+                    <div class="col-md-3 col-6 order-md-1 order-2">
+                        <div class="d-flex flex-column justify-content-between h-100 text-center">
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/capacidad.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Capacidad</span>
+                                    8640 personas por día
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/Mantenimiento.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Mantenimiento</span>
+                                    Computarizado
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/monedero.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Ingreso de monedas</span>
+                                    Monedero electrónico
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Centro -->
+                    <div class="col-md-6 col-12 order-md-2 order-1">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div class="mx-md-n5 mb-md-n5">
+                                <img src="./index_files/img/torniquete.png" alt="Torniquete inteligente" loading="lazy">
+                            </div>
+                            <div class="row row-cols-2 mt-md-5 mt-4 text-center">
+                                <div class="col benefit-item">
+                                    <img src="./index_files/img/caja.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                    <h3 class="h4 mb-0 lh-1">
+                                        <span class="d-block mb-2 fs-base fw-normal">Almacén de monedas</span>
+                                        Reforzado
+                                    </h3>
+                                </div>
+                                <div class="col benefit-item">
+                                    <img src="./index_files/img/indicador.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                    <h3 class="h4 mb-0 lh-1">
+                                        <span class="d-block mb-2 fs-base fw-normal">Notificación</span>
+                                        Indicador led
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna derecha -->
+                    <div class="col-md-3 col-6 order-md-3 order-3">
+                        <div class="d-flex flex-column justify-content-between h-100 text-center">
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/brazo.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Resistencia</span>
+                                    Brazo de acero
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/comunicacion.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Conectividad</span>
+                                    Múltiples dispositivos
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/seguro.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Seguridad</span>
+                                    Estructura reforzada y llave de acceso a
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ===================== DISPENSADOR ===================== -->
+            <section class="bg-secondary overflow-hidden py-2 py-sm-3 py-md-4 py-lg-5" id="dispensador">
+                <div class="container py-5 pb-lg-4">
+                    <div class="row">
+
+                        <!-- Cursor parallax -->
+                        <div class="col-md-7 offset-xl-1 order-md-2">
+                            <div class="parallax">
+                                <div class="parallax-layer" data-depth="0.1">
+                                    <img src="./index_files/img/imgdis2.png" alt="Dispensador automático de papel" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="0.3">
+                                    <img src="./index_files/img/imgdis1.png" alt="" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="-0.1">
+                                    <img src="./index_files/img/imgdis3.png" alt="" loading="lazy">
+                                </div>
+                                <div class="parallax-layer" data-depth="0.2">
+                                    <img src="./index_files/img/imgdis4.png" alt="" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Texto + insignias -->
+                        <div class="col-md-5 col-xl-4 order-md-1 text-center text-md-start pt-lg-3">
+                            <h2 class="display-5 mb-4">Dispensadores Automáticos</h2>
+                            <p class="fs-xl pb-2 mb-4 mb-xl-5">Descubre la comodidad del futuro con nuestros dispensadores automáticos. Con un diseño innovador y tecnología de vanguardia, nuestros dispensadores automáticos te ofrecen una experiencia sin complicaciones. Olvídate de las largas filas y las esperas innecesarias. Con solo unos pocos pasos. Su interfaz intuitiva y amigable hace que sea fácil de usar para personas de todas las edades. Además de la comodidad, nuestros dispensadores automáticos también le permiten controlar su ganancia en tiempo real. Descubre la comodidad del futuro hoy mismo con nuestros dispensadores automáticos de última generación.</p>
+                            <h3 class="pb-3 mb-lg-4">Coming soon on</h3>
+                            <div class="badges">
+                                <img src="./index_files/img/calidad.png" alt="Sello de calidad" loading="lazy">
+                                <img src="./index_files/img/garantia.png" alt="Sello de garantía" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beneficios dispensador -->
+            <section class="container mb-5 pt-md-2 pt-lg-4 pt-xl-5" id="dispensadorCaracteristicas">
+                <h2 class="h1 my-4 pt-2 text-center">Descubre los asombrosos poderes del dispensador del futuro</h2>
+                <div class="row pb-4">
+
+                    <!-- Columna izquierda -->
+                    <div class="col-md-3 col-6 order-md-1 order-2">
+                        <div class="d-flex flex-column justify-content-between h-100 text-center">
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/papel.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Suministro de papel</span>
+                                    Hasta 1000 metros diarios
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/Mantenimiento.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Mantenimiento</span>
+                                    Computarizado
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/notipantalla.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Notificación por pantalla</span>
+                                    Porcentaje de papel restante en tiempo real
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Centro -->
+                    <div class="col-md-6 col-12 order-md-2 order-1">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <div class="mx-md-n5 mb-md-n5">
+                                <img src="./index_files/img/dispensador.png" alt="Dispensador automático" loading="lazy">
+                            </div>
+                            <div class="row row-cols-2 mt-md-5 mt-4 text-center">
+                                <div class="col benefit-item">
+                                    <img src="./index_files/img/alarmapapel.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                    <h3 class="h4 mb-0 lh-1">
+                                        <span class="d-block mb-2 fs-base fw-normal">Notificación</span>
+                                        Alarma para recarga de papel - tapa abierta
+                                    </h3>
+                                </div>
+                                <div class="col benefit-item">
+                                    <img src="./index_files/img/silencioso.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                    <h3 class="h4 mb-0 lh-1">
+                                        <span class="d-block mb-2 fs-base fw-normal">Nivel de ruido</span>
+                                        Silencioso
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna derecha -->
+                    <div class="col-md-3 col-6 order-md-3 order-3">
+                        <div class="d-flex flex-column justify-content-between h-100 text-center">
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/seguro.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Seguridad</span>
+                                    Estructura reforzada y llave
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/contador.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Contador</span>
+                                    Muestra por pantalla la cantidad de papel despachado en tiempo real
+                                </h3>
+                            </div>
+                            <div class="benefit-item mt-md-5 mt-4">
+                                <img src="./index_files/img/comunicacion.png" alt="" class="d-inline-block mb-4" loading="lazy">
+                                <h3 class="h4 mb-0 lh-1">
+                                    <span class="d-block mb-2 fs-base fw-normal">Conectividad</span>
+                                    Múltiples dispositivos
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ===================== PRODUCTOS / COTIZAR ===================== -->
+            <section class="mb-5 py-5 bg-secondary">
+                <div class="container my-xl-5 my-lg-4 pb-2 py-sm-3 py-md-4">
+                    <div class="row my-2">
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="mb-lg-0 mb-5 mx-lg-0 mx-auto text-lg-start text-center" style="max-width: 26rem;">
+                                <h2 class="h1 mb-4 pb-3">Elige lo mejor para tu empresa.</h2>
+                                <p class="mb-4">“Nuestros dispositivos están transformando las reglas del juego en comodidad y seguridad. Ahora puedes disfrutar de una experiencia única, accediendo a tus necesidades con facilidad y controlando el acceso de manera eficiente y vanguardista.”</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 offset-xl-1">
+                            <div class="row row-cols-sm-2 row-cols-1 gy-4">
+
+                                <div class="col">
+                                    <div class="card card-hover border-0 shadow position-relative">
+                                        <img src="./index_files/img/dispensadorImg.png" alt="Dispensador automático" class="card-img-top" loading="lazy">
+                                        <div class="card-body mt-n5 mx-3 mb-3 pt-0 text-center">
+                                            <span>Dispensador automático</span>
+                                            <div class="mt-2 mb-4"></div>
+                                            <a href="https://wa.me/51904814963" class="btn btn-primary stretched-link" target="_blank" rel="noopener">Cotizar ahora</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="card card-hover border-0 shadow position-relative">
+                                        <img src="./index_files/img/torniqueteImg.png" alt="Torniquete" class="card-img-top" loading="lazy">
+                                        <div class="card-body mt-n5 mx-3 mb-3 pt-0 text-center">
+                                            <span>Torniquete</span>
+                                            <div class="mt-2 mb-4"></div>
+                                            <a href="https://wa.me/51904814963" class="btn btn-primary stretched-link" target="_blank" rel="noopener">Cotizar ahora</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ===================== CLIENTES ===================== -->
+            <section class="container mb-5 pb-3 pb-md-4 pb-lg-5">
+                <div class="row gy-4 py-xl-2">
+                    <div class="col-md-4">
+                        <h2 class="mb-0 text-md-start text-center">Clientes que confían en nosotros:</h2>
+                    </div>
+                    <div class="col-lg-7 offset-lg-1 col-md-8">
+                        <div class="row row-cols-sm-4 row-cols-2 gy-4">
+                            <div class="col">
+                                <div class="position-relative text-center">
+                                    <img src="./index_files/img/cliente1.png" width="100" alt="Webby" class="d-block mx-auto mb-3" loading="lazy">
+                                    <a href="#" class="text-body justify-content-center fs-sm stretched-link text-decoration-none">4x mobile of the day</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="position-relative text-center">
+                                    <img src="./index_files/img/cliente2.png" width="100" alt="CSSDA" class="d-block mx-auto mb-3" loading="lazy">
+                                    <a href="#" class="text-body justify-content-center fs-sm stretched-link text-decoration-none">1x Kudos</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="position-relative text-center">
+                                    <img src="./index_files/img/cliente3.png" width="100" alt="Awwwards" class="d-block mx-auto mb-3" loading="lazy">
+                                    <a href="#" class="text-body justify-content-center fs-sm stretched-link text-decoration-none">3x website of the day</a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="position-relative text-center">
+                                    <img src="./index_files/img/cliente4.png" width="100" alt="FWA" class="d-block mx-auto mb-3" loading="lazy">
+                                    <a href="#" class="text-body justify-content-center fs-sm stretched-link text-decoration-none">2x best website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ===================== MAPA + HORARIO ===================== -->
+            <section class="container pb-5 mb-1 mb-md-4 mb-lg-5">
+                <div class="row pb-xl-3">
+                    <div class="col-md-6 pb-2 pb-md-0 mb-4 mb-md-0">
+                        <div class="gallery rounded-3 shadow-sm">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Jr.+Paruro+1349+Cercado+de+Lima" target="_blank" rel="noopener">
+                                <img src="./index_files/img/mapa.png" alt="Mapa de ubicación - Jr. Paruro 1349, Cercado de Lima" loading="lazy">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-md-6 offset-xl-1">
+                        <h2 class="h1 pb-4 mb-1 mb-lg-3">Realizar una consulta gratuita</h2>
+                        <ul class="list-unstyled pb-3 mb-0 mb-lg-3">
+                            <li class="d-flex mb-3">
+                                <i class="bx bx-time text-muted fs-xl mt-1 me-2"></i>
+                                <div>
+                                    <div><span class="text-dark fw-semibold me-1"><b>Horario de atención:</b></span></div>
+                                </div>
+                            </li>
+                            <li class="d-flex mb-3">
+                                <i class="bx bx-time text-muted fs-xl mt-1 me-2"></i>
+                                <div>
+                                    <div><span class="text-dark fw-semibold me-1">Lunes – Domingo:</span>9:00 am – 10:00 pm</div>
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/51904814963" class="btn btn-primary shadow-primary btn-lg" target="_blank" rel="noopener">Solicitar cotización</a>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ===================== CONTACTO ===================== -->
+            <section class="container pb-lg-2 mt-md-n2" id="contactenos">
+                <div class="card border-0 bg-gradient-primary" style="background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%) !important;">
+                    <div class="card-body p-md-5 p-4 bg-size-cover" style="background-image: url(./index_files/img/contact-bg.png);">
+                        <div class="py-md-5 py-4 text-center">
+                            <h3 class="h4 fw-normal text-light opacity-75">¿Quieres trabajar con nosotros? ¡Hablemos! ¿O quizás necesitas cotizar?</h3>
+                            <a href="https://wa.me/51904814963" class="display-6 text-light" target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> 904814963</a>
+                            <div class="pt-md-5 pt-4 pb-md-2">
+                                <a href="https://wa.me/51904814963" class="btn btn-lg btn-light" target="_blank" rel="noopener">Contáctenos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <!-- Main Content Wrapper End -->
+
+        <!-- Footer Start-->
+        <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa" style="background-color: rgb(244, 248, 250);">
+            <div class="container">
+                <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
+
+                    <div class="col-12 col-md footer-column-1 mb-sm--42">
+                        <div class="footer-widget">
+                            <div class="textwidget">
+                                <figure class="footer-logo mb--10">
+                                    <img src="./index_files/img/logo.png" alt="Peruvian Technology Manufacturing Company" loading="lazy">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md footer-column-1 mb-sm--42">
+                        <div class="footer-widget">
+                            <div class="address-widget">
+                                <span class="addr-label">Dirección:</span>
+                                <address>Jr. Paruro 1349 - Cercado de Lima</address>
+
+                                <span class="addr-label">Telf:</span>
+                                <a href="tel:+51904814963">904814963</a>
+
+                                <span class="addr-label">Correo:</span>
+                                <a href="mailto:peruvian.technology.eirl@gmail.com">peruvian.technology.eirl@gmail.com</a>
+
+                                <span class="addr-label">Google Maps:</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Jr.+Paruro+1349+Cercado+de+Lima" target="_blank" rel="noopener">Peruvian Technology Manufacturing Company</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md footer-column-2 mb-md--33">
+                        <div class="footer-widget">
+                            <h3 class="widget-title mb--35 mb-sm--15">Menú</h3>
+                            <ul class="footer-menu">
+                                <li>
+                                    <a href="#torniquete">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>Torniquete</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#dispensador">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>Dispensador</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row ptb--20">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">© 2023 Peruvian Technology Manufacturing Company.</p>
+                    </div>
+                </div>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
+        </footer>
+        <!-- Footer End-->
 
-    <section class="pt-section">
-      <div class="pt-container">
-        <div class="pt-section-heading">
-          <div class="pt-eyebrow">Experiencia</div>
-          <h2>Clientes que confían en nosotros</h2>
-        </div>
-        <div class="pt-clients">
-          <div class="pt-client"><img src="./index_files/img/cliente1.png" alt="Cliente"></div>
-          <div class="pt-client"><img src="./index_files/img/cliente2.png" alt="Cliente"></div>
-          <div class="pt-client"><img src="./index_files/img/cliente3.png" alt="Cliente"></div>
-          <div class="pt-client"><img src="./index_files/img/cliente4.png" alt="Cliente"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pt-section pt-section-soft" id="contactenos">
-      <div class="pt-container">
-        <div class="pt-contact-box">
-          <div>
-            <div class="pt-eyebrow" style="color:#dce6ff">Hablemos de tu proyecto</div>
-            <h2>¿Necesitas una solución automatizada?</h2>
-            <p>Cuéntanos qué necesitas y solicita una cotización o visita técnica.</p>
-          </div>
-          <a class="pt-button" href="https://wa.me/904814963" target="_blank" rel="noopener">Contactar por WhatsApp ↗</a>
-        </div>
-        <div class="pt-contact-info">
-          <div class="pt-info-card">
-            <strong>Horario de atención</strong>
-            <span>Lunes a domingo: 9:00 a. m. – 10:00 p. m.</span>
-          </div>
-          <div class="pt-info-card">
-            <strong>Teléfono y WhatsApp</strong>
-            <a href="https://wa.me/904814963" target="_blank" rel="noopener">904 814 963</a>
-          </div>
-          <div class="pt-info-card">
-            <strong>Dirección</strong>
-            <span>Jr. Paruro 1349 - Cercado de Lima</span>
-          </div>
-          <div class="pt-info-card">
-            <strong>Correo electrónico</strong>
-            <a href="mailto:peruvian.technology.eirl@gmail.com">peruvian.technology.eirl@gmail.com</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="pt-footer">
-    <div class="pt-container">
-      <div class="pt-footer-grid">
-        <div class="pt-footer-logo">
-          <img src="./index_files/img/logo.png" alt="Peruvian Technology">
-          <p>Fabricación de soluciones tecnológicas para control de acceso y dispensación automática.</p>
-        </div>
-        <div>
-          <h3>Productos</h3>
-          <div class="pt-footer-links">
-            <a href="#torniquete">Torniquetes automatizados</a>
-            <a href="#dispensador">Dispensadores automáticos</a>
-            <a href="#productos">Todos los productos</a>
-          </div>
-        </div>
-        <div>
-          <h3>Contacto</h3>
-          <div class="pt-footer-links">
-            <a href="https://wa.me/904814963" target="_blank" rel="noopener">904 814 963</a>
-            <a href="mailto:peruvian.technology.eirl@gmail.com">peruvian.technology.eirl@gmail.com</a>
-            <span>Jr. Paruro 1349 - Cercado de Lima</span>
-          </div>
-        </div>
-      </div>
-      <div class="pt-copyright">© 2026 Peruvian Technology Manufacturing Company. Todos los derechos reservados.</div>
     </div>
-  </footer>
+    <!-- Main Wrapper End -->
 
-  <a class="pt-whatsapp" href="https://wa.me/904814963" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">W</a>
 
-  <script>
+    <!-- ************************* JS ************************* -->
+    <!-- Script ligero y autónomo: preloader, menú móvil y parallax.
+         Si vuelves a cargar el JS del tema (vendor.js / main.js), elimina este bloque para no duplicar funciones. -->
+    <script>
     (function () {
-      var button = document.querySelector(".pt-menu-toggle");
-      var menu = document.querySelector("#pt-menu");
+        // 1) Ocultar preloader
+        var pre = document.querySelector('.ft-preloader');
+        function hidePre() { if (pre) pre.classList.add('is-hidden'); }
+        window.addEventListener('load', hidePre);
+        setTimeout(hidePre, 4000);
 
-      if (button && menu) {
-        button.addEventListener("click", function () {
-          var isOpen = menu.classList.toggle("is-open");
-          button.setAttribute("aria-expanded", isOpen ? "true" : "false");
-          button.textContent = isOpen ? "×" : "☰";
-        });
-
-        var links = menu.querySelectorAll("a");
-        for (var i = 0; i < links.length; i++) {
-          links[i].addEventListener("click", function () {
-            menu.classList.remove("is-open");
-            button.setAttribute("aria-expanded", "false");
-            button.textContent = "☰";
-          });
+        // 2) Menú móvil
+        var btn = document.querySelector('.menu-btn');
+        var nav = document.getElementById('mobileNav');
+        function closeNav() {
+            nav.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
         }
-      }
-    }());
-  </script>
+        if (btn && nav) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var open = nav.classList.toggle('is-open');
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            nav.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') closeNav();
+            });
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 992) closeNav();
+            });
+        }
+
+        // 3) Parallax con el cursor (solo en dispositivos con mouse)
+        var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (canHover && !reduce) {
+            document.querySelectorAll('.parallax').forEach(function (box) {
+                var layers = box.querySelectorAll('.parallax-layer');
+                var section = box.closest('section') || box;
+                section.addEventListener('mousemove', function (e) {
+                    var r = section.getBoundingClientRect();
+                    var x = (e.clientX - r.left) / r.width - 0.5;
+                    var y = (e.clientY - r.top) / r.height - 0.5;
+                    layers.forEach(function (l) {
+                        var d = parseFloat(l.getAttribute('data-depth')) || 0;
+                        l.style.transform = 'translate3d(' + (-x * d * 100).toFixed(1) + 'px,' + (-y * d * 100).toFixed(1) + 'px,0)';
+                    });
+                });
+                section.addEventListener('mouseleave', function () {
+                    layers.forEach(function (l) { l.style.transform = ''; });
+                });
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
